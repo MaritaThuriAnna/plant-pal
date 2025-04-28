@@ -4,20 +4,28 @@ import { provideRouter, Routes } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideStore } from '@ngrx/store';
 import { environment } from './environments/environment';
+import { provideEffects } from '@ngrx/effects';
+import { PlantEffects } from './app/store/plants/plant.effects';
+import { plantReducer } from './app/store/plants/plant.reducer';
+import { getFirestore } from 'firebase/firestore';
 
-const routes: Routes = [
-  {}
-];
+// const routes: Routes = [
+//   {}
+// ];
+
+const firebaseApp = initializeApp(environment.firebase);
+const db = getFirestore(firebaseApp);
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(routes),
+    // provideRouter(routes),
     provideHttpClient(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
+    provideStore({ plants: plantReducer }),
     provideDatabase(() => getDatabase()),
+    provideEffects([PlantEffects]),
 
   ],
 });
