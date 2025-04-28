@@ -9,6 +9,7 @@ import { addPlant } from '../../store/plants/plant.actions';
   selector: 'app-add-plant',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './add-plant.component.html',
+  styleUrl: './add-plant.component.css'
 })
 export class AddPlantComponent {
   form: FormGroup;  

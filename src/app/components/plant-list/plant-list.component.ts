@@ -9,6 +9,7 @@ import { loadPlants } from '../../store/plants/plant.actions';
   selector: 'app-plant-list',
   imports: [CommonModule],
   templateUrl: './plant-list.component.html',
+  styleUrl: './plant-list.component.css'
 })
 export class PlantListComponent {
   plants$ 
