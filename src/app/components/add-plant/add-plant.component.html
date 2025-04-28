@@ -1,1 +1,13 @@
-<p>add-plant works!</p>
+<div class="add-plant-form">
+    <h2>Add a New Plant 🌿</h2>
+  
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input formControlName="name" placeholder="Plant name" />
+      <input formControlName="species" placeholder="Species" />
+      <input formControlName="wateringFrequency" type="number" placeholder="Watering frequency (days)" />
+      <textarea formControlName="notes" placeholder="Notes"></textarea>
+  
+      <button type="submit">Add Plant</button>
+    </form>
+  </div>
+  

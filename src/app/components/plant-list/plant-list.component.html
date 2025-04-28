@@ -1,1 +1,10 @@
-<p>plant-list works!</p>
+<div class="plant-list">
+    <h2>My Plants</h2>
+  
+    <ul>
+      <li *ngFor="let plant of plants$ | async">
+        {{ plant.name }} - Water every {{ plant.wateringFrequency }} days
+      </li>
+    </ul>
+  </div>
+  

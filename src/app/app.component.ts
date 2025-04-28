@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loadPlants } from './store/plants/plant.actions';
+import { AddPlantComponent } from "./components/add-plant/add-plant.component";
+import { PlantListComponent } from "./components/plant-list/plant-list.component";
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [AddPlantComponent, PlantListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
