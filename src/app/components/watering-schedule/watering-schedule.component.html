@@ -1,9 +1,9 @@
 <div class="calendar">
-    <h2>Watering Calendar 📅</h2>
+    <h2>Watering Calendar</h2>
     <div class="calendar-header-controls">
-        <button (click)="goToPrevMonth()">⬅️</button>
+        <button (click)="goToPrevMonth()">←</button>
         <h2>{{ getMonthName(currentMonth) }} {{ currentYear }}</h2>
-        <button (click)="goToNextMonth()">➡️</button>
+        <button (click)="goToNextMonth()">→</button>
       </div>
       
     <div class="calendar-grid">
@@ -18,7 +18,7 @@
                 <div class="day-number">{{ day.day }}</div>
                 <div class="plants-list">
                     <div *ngFor="let plant of day.plants" class="plant-name">
-                        🌱 {{ plant.name }}
+                        {{ plant.name }}
                     </div>
                 </div>
             </div>

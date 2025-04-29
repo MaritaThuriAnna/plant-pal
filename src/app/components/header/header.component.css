@@ -1,0 +1,89 @@
+.header {
+  background: #81c784;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.toggle-button {
+  background: white;
+  color: #2e7d32;
+  border: none;
+  font-size: 1.4rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: none;
+}
+
+.nav-links button {
+  background: white;
+  color: #2e7d32;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+
+.nav-links button:hover {
+  background: #e8f5e9;
+}
+
+.nav-links button.active-link {
+  background: #2e7d32;
+  color: white;
+}
+
+.logo {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+}
+
+@media (max-width: 568px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links.hidden {
+    display: none !important; /* ensure nothing overrides it */
+  }
+
+  
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .logo {
+    align-self: center;
+    margin-top: 10px;
+  }
+
+  .nav-links button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .toggle-button {
+    display: block;
+  }
+
+}
