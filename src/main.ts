@@ -9,7 +9,7 @@ import { environment } from './environments/environment';
 import { provideEffects } from '@ngrx/effects';
 import { PlantEffects } from './app/store/plants/plant.effects';
 import { plantReducer } from './app/store/plants/plant.reducer';
-import { getFirestore } from 'firebase/firestore';
+import { provideMessaging, getMessaging } from '@angular/fire/messaging';
 import { routes } from './app/app.routes';
 
 
@@ -19,6 +19,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     provideHttpClient(),
+    provideMessaging(() => getMessaging()),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStore({ plants: plantReducer }),
     provideDatabase(() => getDatabase()),

@@ -4,6 +4,7 @@ import { loadPlants } from './store/plants/plant.actions';
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { RouterOutlet } from '@angular/router';
+import { PushNotificationService } from './services/push-notification.service';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,10 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'plant-pal';
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private pushService: PushNotificationService) {
     this.store.dispatch(loadPlants());
+    this.pushService.requestPermission();
+    this.pushService.listen();
   }  
 
 }

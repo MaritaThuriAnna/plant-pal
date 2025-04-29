@@ -7,5 +7,6 @@ export const environment = {
         storageBucket: "plant-pal-a09e7.firebasestorage.app",
         messagingSenderId: "829406171483",
         appId: "1:829406171483:web:5f401e3a35a4106a56ca7e"
-    }
+    },
+    vapidKey: 'BFG_JM-cv8aYvI7Okgo8bth6kADEgQtvJXu1sHgZ4x9pw5oYocaCxoESbTp3FM8bZVej8AySVxPKengYjT0xAIk'
 };
