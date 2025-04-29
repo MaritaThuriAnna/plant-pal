@@ -24,6 +24,14 @@
             <textarea formControlName="notes" placeholder="Notes (optional)"></textarea>
         </div>
 
+        <div class="form-field">
+            <input type="file" (change)="onPhotoSelected($event)" accept="image/*" />
+        </div>
+
+        <div class="form-field" *ngIf="selectedPhotoUrl">
+            <img [src]="selectedPhotoUrl" alt="Preview" style="width: 100px; height: auto; border-radius: 8px;">
+        </div>
+
         <button type="submit" [disabled]="form.invalid">Add Plant</button>
     </form>
 </div>

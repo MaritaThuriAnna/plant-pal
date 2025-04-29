@@ -4,15 +4,26 @@
     <ul>
         <app-notification></app-notification>
         <li *ngFor="let plant of plants$ | async" [ngClass]="getPlantStatus(plant)">
-            {{ plant.name }} - Water every {{ plant.wateringFrequency }} days
-            <br />
-            Last watered: {{ plant.lastWatered }}
-            <br />
-            Notes: {{ plant.notes }}
-            <br />
-            Status: <strong>{{ getPlantStatus(plant) }}</strong>
-            <br />
-            <button (click)="markAsWatered(plant.id)">💧 Mark as Watered</button>
+            <div class="plant-card">
+                <div class="plant-image" *ngIf="plant.photoUrl">
+                    <img [src]="plant.photoUrl" alt="Plant photo">
+                </div>
+
+                <div class="plant-details">
+                    🌿 <strong>{{ plant.name }}</strong>
+                    {{ plant.notes }}
+                    <br />
+                    <br />
+                    Water every {{ plant.wateringFrequency }} days
+                    <br />
+                    Last watered: {{ plant.lastWatered }}
+                    <br />
+                    Status: <strong>{{ getPlantStatus(plant) }}</strong>
+
+                    <button (click)="markAsWatered(plant.id)">💧 Mark as Watered</button>
+                </div>
+            </div>
         </li>
+
     </ul>
 </div>

@@ -14,6 +14,7 @@ import { Plant } from '../../store/plants/plant.model';
 })
 export class AddPlantComponent {
   form: FormGroup;
+  selectedPhotoUrl: string = '';
 
   constructor(private fb: FormBuilder, private store: Store) {
     this.form = this.fb.group({
@@ -33,11 +34,24 @@ export class AddPlantComponent {
         species: this.form.value.species || '',
         wateringFrequency: this.form.value.wateringFrequency ?? 0,
         lastWatered: today,
-        notes: this.form.value.notes || ''
+        notes: this.form.value.notes || '',
+        photoUrl: this.selectedPhotoUrl || ''
       };
 
       this.store.dispatch(addPlant({ plant }));
       this.form.reset();
+      this.selectedPhotoUrl = '';
+    }
+  }
+
+  onPhotoSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.selectedPhotoUrl = e.target.result; // base64 url
+      };
+      reader.readAsDataURL(file);
     }
   }
 
