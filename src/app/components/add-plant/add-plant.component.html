@@ -1,0 +1,37 @@
+<div class="add-plant-form">
+    <h2>Add a New Plant 🌿</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="form-field">
+            <input formControlName="name" placeholder="Plant name" />
+            <div class="error" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+                Plant name is required.
+            </div>
+        </div>
+
+        <div class="form-field">
+            <input formControlName="species" placeholder="Species (optional)" />
+        </div>
+
+        <div class="form-field">
+            <input formControlName="wateringFrequency" type="number" placeholder="Watering frequency (days)" />
+            <div class="error" *ngIf="form.get('wateringFrequency')?.invalid && form.get('wateringFrequency')?.touched">
+                Watering frequency is required.
+            </div>
+        </div>
+
+        <div class="form-field">
+            <textarea formControlName="notes" placeholder="Notes (optional)"></textarea>
+        </div>
+
+        <div class="form-field">
+            <input type="file" (change)="onPhotoSelected($event)" accept="image/*" />
+        </div>
+
+        <div class="form-field" *ngIf="selectedPhotoUrl">
+            <img [src]="selectedPhotoUrl" alt="Preview" style="width: 100px; height: auto; border-radius: 8px;">
+        </div>
+
+        <button type="submit" [disabled]="form.invalid">Add Plant</button>
+    </form>
+</div>

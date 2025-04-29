@@ -1,0 +1,149 @@
+.plant-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.plant-list li {
+    background: white;
+    margin: 10px auto;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.plant-list button {
+    padding: 8px 16px;
+    background: #81c784;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.plant-list button:hover {
+    background: #66bb6a;
+}
+
+.plant-list button:active {
+    background: #388e3c;
+}
+
+.plant-list li.OK {
+    border-left: 5px solid #81c784;
+}
+
+.plant-list li.Needs\ watering {
+    border-left: 5px solid #e57373;
+    background: #fff5f5;
+}
+
+.plant-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.plant-image img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.plant-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 1rem;
+    flex: 1;
+}
+
+.plant-details button {
+    margin-top: 8px;
+    padding: 8px 16px;
+    background: #81c784;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.plant-details button:hover {
+    background: #66bb6a;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+
+@media (max-width: 600px) {
+    .plant-card {
+      flex-direction: row;
+      align-items: left;
+      text-align: left;
+      padding: 15px;
+    }
+  
+    .plant-list li {
+        max-width: 300px; 
+        max-height: 500px;
+        align-items: center;
+      }
+      
+    .plant-image img {
+      width: 100px;
+      margin-bottom: 15px; 
+    }
+  
+    .plant-details {
+      align-items: center;
+      gap: 8px; 
+      font-size: 1rem;
+    }
+  
+    .plant-details button {
+      width: 100%;
+      max-width: 250px;
+      font-size: small;
+      padding: 8px 8px;
+    }
+  }

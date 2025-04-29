@@ -1,0 +1,47 @@
+<div class="plant-list">
+    <h2>My Plants 🌱</h2>
+
+    <ul>
+        <app-notification></app-notification>
+        <li *ngFor="let plant of plants$ | async" [ngClass]="getPlantStatus(plant)">
+            <div class="plant-card">
+                <div class="plant-image" *ngIf="plant.photoUrl">
+                    <img [src]="plant.photoUrl" alt="Plant photo">
+                </div>
+
+                <div class="plant-details">
+                    🌿
+                    <strong>{{ plant.name }}</strong>
+                    <div>{{ plant.notes }}</div>
+                    <div>Water every {{ plant.wateringFrequency }} days</div>
+                    <div>Last watered: {{ plant.lastWatered }}</div>
+                    <div>Next watering: {{ plant.nextWatering }}</div>
+                    <div>Status: <strong>{{ getPlantStatus(plant) }}</strong></div>
+                    <button (click)="markAsWatered(plant.id)">💧 Mark as Watered</button>
+                    <button (click)="editPlant(plant)"> Edit</button>
+                    <button (click)="deletePlant(plant.id)"> Delete</button>
+
+                </div>
+            </div>
+            <!-- Modalul pentru editare planta -->
+            <div class="modal-backdrop" *ngIf="editingPlant">
+                <div class="modal-content">
+                    <h2>Edit Plant 🌿</h2>
+
+                    <input [(ngModel)]="editForm.name" placeholder="Plant Name" />
+                    <input [(ngModel)]="editForm.species" placeholder="Species" />
+                    <input type="number" [(ngModel)]="editForm.wateringFrequency"
+                        placeholder="Watering Frequency (days)" />
+                    <textarea [(ngModel)]="editForm.notes" placeholder="Notes"></textarea>
+
+                    <div class="modal-actions">
+                        <button (click)="savePlant()"> Save</button>
+                        <button (click)="cancelEdit()"> Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+        </li>
+
+    </ul>
+</div>
