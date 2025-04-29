@@ -2,6 +2,7 @@
     <h2>My Plants 🌱</h2>
 
     <ul>
+        <app-notification></app-notification>
         <li *ngFor="let plant of plants$ | async" [ngClass]="getPlantStatus(plant)">
             {{ plant.name }} - Water every {{ plant.wateringFrequency }} days
             <br />

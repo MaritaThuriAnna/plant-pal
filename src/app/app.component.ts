@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { loadPlants } from './store/plants/plant.actions';
 import { AddPlantComponent } from "./components/add-plant/add-plant.component";
@@ -17,4 +16,5 @@ export class AppComponent {
   constructor(private store: Store) {
     this.store.dispatch(loadPlants());
   }  
+
 }

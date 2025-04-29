@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectAllPlants } from '../../store/plants/plant.selectors';
 import { loadPlants, updateLastWatered } from '../../store/plants/plant.actions';
+import { NotificationComponent } from "../notification/notification.component";
 
 @Component({
   standalone: true,
   selector: 'app-plant-list',
-  imports: [CommonModule],
+  imports: [CommonModule, NotificationComponent],
   templateUrl: './plant-list.component.html',
   styleUrl: './plant-list.component.css'
 })
@@ -20,7 +21,6 @@ export class PlantListComponent {
   }
 
   markAsWatered(plantId: string) {
-    console.log("plant id: ", plantId);
     const today = new Date().toISOString().split('T')[0];
     this.store.dispatch(updateLastWatered({ plantId, date: today }));
   }
