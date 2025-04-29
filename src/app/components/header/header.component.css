@@ -17,6 +17,17 @@
   flex-wrap: wrap;
 }
 
+.toggle-button {
+  background: white;
+  color: #2e7d32;
+  border: none;
+  font-size: 1.4rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: none;
+}
+
 .nav-links button {
   background: white;
   color: #2e7d32;
@@ -28,6 +39,7 @@
   border: none;
   cursor: pointer;
 }
+
 
 .nav-links button:hover {
   background: #e8f5e9;
@@ -50,10 +62,14 @@
     align-items: flex-start;
   }
 
+  .nav-links.hidden {
+    display: none !important; /* ensure nothing overrides it */
+  }
+
+  
   .nav-links {
+    flex-direction: column;
     width: 100%;
-    justify-content: center;
-    margin-top: 10px;
   }
 
   .logo {
@@ -65,4 +81,9 @@
     width: 100%;
     text-align: center;
   }
+
+  .toggle-button {
+    display: block;
+  }
+
 }

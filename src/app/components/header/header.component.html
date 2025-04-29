@@ -1,13 +1,15 @@
 <header class="header">
-    <div class="nav-links">
+    <div class="header-top">
+        <div class="logo">Plant Pal 🌱</div>
+        <br>
+        <button class="toggle-button" (click)="toggleMenu()">☰</button>
+        <br>
+    </div>
+
+    <div class="nav-links" [ngClass]="{ hidden: !menuVisible }">
         <button (click)="goTo('dashboard')">Dashboard</button>
         <button (click)="goTo('calendar')">Calendar</button>
         <button (click)="goTo('add-plant')">Add Plant</button>
         <button (click)="goTo('plant-list')">Plant List</button>
     </div>
-  
-    <div class="logo">
-      <span>Plant Pal 🌱</span>
-    </div>
-  </header>
-  
+</header>
