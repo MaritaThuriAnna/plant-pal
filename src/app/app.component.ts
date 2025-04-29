@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { loadPlants } from './store/plants/plant.actions';
-import { AddPlantComponent } from "./components/add-plant/add-plant.component";
-import { PlantListComponent } from "./components/plant-list/plant-list.component";
-import { DashboardComponent } from "./components/dashboard/dashboard.component";
-import { WateringScheduleComponent } from "./components/watering-schedule/watering-schedule.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [AddPlantComponent, PlantListComponent, DashboardComponent, WateringScheduleComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

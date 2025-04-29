@@ -10,17 +10,14 @@ import { provideEffects } from '@ngrx/effects';
 import { PlantEffects } from './app/store/plants/plant.effects';
 import { plantReducer } from './app/store/plants/plant.reducer';
 import { getFirestore } from 'firebase/firestore';
+import { routes } from './app/app.routes';
 
-// const routes: Routes = [
-//   {}
-// ];
 
 const firebaseApp = initializeApp(environment.firebase);
-const db = getFirestore(firebaseApp);
 
 bootstrapApplication(AppComponent, {
   providers: [
-    // provideRouter(routes),
+    provideRouter(routes),
     provideHttpClient(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStore({ plants: plantReducer }),
