@@ -28,4 +28,18 @@ export class NotificationService {
             this.notificationsSubject.next([...this.notifications]);
         }, 5000);
     }
+
+    private notifiedPlants = new Set<string>();
+
+    clearNotificationForPlant(plantId: string) {
+        this.notifiedPlants.delete(plantId);
+    }
+
+    markPlantAsNotified(plantId: string) {
+        this.notifiedPlants.add(plantId);
+    }
+
+    isPlantNotified(plantId: string) {
+        return this.notifiedPlants.has(plantId);
+    }
 }

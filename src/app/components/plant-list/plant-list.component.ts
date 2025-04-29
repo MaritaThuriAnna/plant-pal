@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { selectAllPlants } from '../../store/plants/plant.selectors';
 import { loadPlants, updateLastWatered } from '../../store/plants/plant.actions';
 import { NotificationComponent } from "../notification/notification.component";
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   standalone: true,
@@ -15,15 +16,30 @@ import { NotificationComponent } from "../notification/notification.component";
 export class PlantListComponent {
   plants$ 
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private notify: NotificationService) {
     this.plants$ = this.store.select(selectAllPlants);
     this.store.dispatch(loadPlants());
   }
 
   markAsWatered(plantId: string) {
-    const today = new Date().toISOString().split('T')[0];
-    this.store.dispatch(updateLastWatered({ plantId, date: today }));
+    const today = new Date();
+    const todayString = today.toISOString().split('T')[0];
+  
+    this.store.select(selectAllPlants).subscribe(plants => {
+      const plant = plants.find(p => p.id === plantId);
+      if (plant) {
+        const nextWateringDate = new Date(today.getTime() + plant.wateringFrequency * 24 * 60 * 60 * 1000)
+          .toISOString()
+          .split('T')[0];
+  
+        // update lastWatered + nextWatering
+        this.store.dispatch(updateLastWatered({ plantId, date: todayString, nextWatering: nextWateringDate }));
+  
+        this.notify.clearNotificationForPlant(plantId);
+      }
+    }).unsubscribe();
   }
+  
 
   getPlantStatus(plant: any): string {
     const lastWateredDate = new Date(plant.lastWatered);

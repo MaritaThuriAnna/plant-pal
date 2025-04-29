@@ -10,18 +10,16 @@
                 </div>
 
                 <div class="plant-details">
-                    🌿 <strong>{{ plant.name }}</strong>
-                    {{ plant.notes }}
-                    <br />
-                    <br />
-                    Water every {{ plant.wateringFrequency }} days
-                    <br />
-                    Last watered: {{ plant.lastWatered }}
-                    <br />
-                    Status: <strong>{{ getPlantStatus(plant) }}</strong>
-
+                    🌿 
+                    <strong>{{ plant.name }}</strong>
+                    <div>{{ plant.notes }}</div>
+                    <div>Water every {{ plant.wateringFrequency }} days</div>
+                    <div>Last watered: {{ plant.lastWatered }}</div>
+                    <div>Next watering: {{ plant.nextWatering }}</div>
+                    <div>Status: <strong>{{ getPlantStatus(plant) }}</strong></div>
                     <button (click)="markAsWatered(plant.id)">💧 Mark as Watered</button>
-                </div>
+                  </div>
+                  
             </div>
         </li>
 

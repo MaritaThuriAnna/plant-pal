@@ -11,7 +11,7 @@ export const addPlantFailure = createAction('[Plant] Add Plant Failure', props<{
 
 export const updateLastWatered = createAction(
     '[Plant] Update LastWatered',
-    props<{ plantId: string, date: string }>()
+    props<{ plantId: string, date: string, nextWatering: string }>()
   );
   
   export const updateLastWateredSuccess = createAction(

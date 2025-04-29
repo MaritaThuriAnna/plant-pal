@@ -27,13 +27,19 @@ export class AddPlantComponent {
 
   submit() {
     if (this.form.valid) {
-      const today = new Date().toISOString().split('T')[0];
+      const today = new Date();
+      const wateringFrequency = this.form.value.wateringFrequency ?? 0;
+      const nextWateringDate = new Date(today.getTime() + wateringFrequency * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .split('T')[0];
+
       const plant: Plant = {
         id: '',
         name: this.form.value.name!,
         species: this.form.value.species || '',
-        wateringFrequency: this.form.value.wateringFrequency ?? 0,
-        lastWatered: today,
+        wateringFrequency: wateringFrequency,
+        lastWatered: today.toISOString().split('T')[0],
+        nextWatering: nextWateringDate,
         notes: this.form.value.notes || '',
         photoUrl: this.selectedPhotoUrl || ''
       };
@@ -43,6 +49,7 @@ export class AddPlantComponent {
       this.selectedPhotoUrl = '';
     }
   }
+
 
   onPhotoSelected(event: any) {
     const file = event.target.files[0];
