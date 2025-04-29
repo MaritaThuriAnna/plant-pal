@@ -12,6 +12,7 @@ export class PlantEffects {
     loadPlants$
     addPlant$
     updateLastWatered$
+    updatePlant$
 
     constructor(
         private plantService: PlantService
@@ -51,6 +52,18 @@ export class PlantEffects {
                 )
             )
         );
+
+        this.updatePlant$ = createEffect(() =>
+            this.actions$.pipe(
+              ofType(PlantActions.updatePlant),
+              mergeMap(({ plant }) =>
+                this.plantService.updatePlant(plant).pipe(
+                  map(() => PlantActions.updatePlantSuccess({ plant })),
+                  catchError(error => of(PlantActions.updatePlantFailure({ error })))
+                )
+              )
+            )
+          );
     }
 
 

@@ -38,4 +38,15 @@ export class PlantService {
         const plantDocRef = doc(db, 'plants', plantId);
         return from(updateDoc(plantDocRef, { lastWatered: date }));
     }
+
+    updatePlant(plant: Plant) {
+        const plantDocRef = doc(db, 'plants', plant.id);
+        return from(updateDoc(plantDocRef, {
+          name: plant.name,
+          species: plant.species,
+          wateringFrequency: plant.wateringFrequency,
+          notes: plant.notes
+        }));
+      }
+      
 }

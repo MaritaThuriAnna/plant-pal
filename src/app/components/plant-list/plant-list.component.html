@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="plant-details">
-                    🌿 
+                    🌿
                     <strong>{{ plant.name }}</strong>
                     <div>{{ plant.notes }}</div>
                     <div>Water every {{ plant.wateringFrequency }} days</div>
@@ -18,9 +18,27 @@
                     <div>Next watering: {{ plant.nextWatering }}</div>
                     <div>Status: <strong>{{ getPlantStatus(plant) }}</strong></div>
                     <button (click)="markAsWatered(plant.id)">💧 Mark as Watered</button>
-                  </div>
-                  
+                    <button (click)="editPlant(plant)">✏️ Edit</button>
+                </div>
             </div>
+            <!-- Modalul pentru editare planta -->
+            <div class="modal-backdrop" *ngIf="editingPlant">
+                <div class="modal-content">
+                    <h2>Edit Plant 🌿</h2>
+
+                    <input [(ngModel)]="editForm.name" placeholder="Plant Name" />
+                    <input [(ngModel)]="editForm.species" placeholder="Species" />
+                    <input type="number" [(ngModel)]="editForm.wateringFrequency"
+                        placeholder="Watering Frequency (days)" />
+                    <textarea [(ngModel)]="editForm.notes" placeholder="Notes"></textarea>
+
+                    <div class="modal-actions">
+                        <button (click)="savePlant()">💾 Save</button>
+                        <button (click)="cancelEdit()">❌ Cancel</button>
+                    </div>
+                </div>
+            </div>
+
         </li>
 
     </ul>

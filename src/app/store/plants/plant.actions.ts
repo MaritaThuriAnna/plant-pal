@@ -23,4 +23,20 @@ export const updateLastWatered = createAction(
     '[Plant] Update LastWatered Failure',
     props<{ error: any }>()
   );
+
+  export const updatePlant = createAction(
+    '[Plant] Update Plant',
+    props<{ plant: Plant }>()
+  );
+  
+  export const updatePlantSuccess = createAction(
+    '[Plant] Update Plant Success',
+    props<{ plant: Plant }>()
+  );
+  
+  export const updatePlantFailure = createAction(
+    '[Plant] Update Plant Failure',
+    props<{ error: any }>()
+  );
+  
   

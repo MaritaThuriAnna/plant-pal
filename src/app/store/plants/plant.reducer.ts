@@ -33,5 +33,13 @@ export const plantReducer = createReducer(
       plant.id === plantId ? { ...plant, lastWatered: date } : plant
     )
   })),
+
+  on(PlantActions.updatePlantSuccess, (state, { plant }) => ({
+    ...state,
+    plants: state.plants.map(p =>
+      p.id === plant.id ? { ...p, ...plant } : p
+    )
+  }))
+  
   
 );
