@@ -1,0 +1,28 @@
+<div class="calendar">
+    <h2>Watering Calendar 📅</h2>
+    <div class="calendar-header-controls">
+        <button (click)="goToPrevMonth()">⬅️</button>
+        <h2>{{ getMonthName(currentMonth) }} {{ currentYear }}</h2>
+        <button (click)="goToNextMonth()">➡️</button>
+      </div>
+      
+    <div class="calendar-grid">
+        <div class="calendar-header" *ngFor="let day of ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']">
+            {{ day }}
+        </div>
+
+        <div class="calendar-day" *ngFor="let day of calendarDays" [class.today]="isToday(day.date)"
+            [class.past]="isPast(day.date)">
+
+            <div *ngIf="day.day !== 0" class="day-content">
+                <div class="day-number">{{ day.day }}</div>
+                <div class="plants-list">
+                    <div *ngFor="let plant of day.plants" class="plant-name">
+                        🌱 {{ plant.name }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

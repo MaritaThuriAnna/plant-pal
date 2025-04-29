@@ -1,0 +1,82 @@
+.calendar {
+  background: #f1f8e9;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.calendar-header {
+  text-align: center;
+  font-weight: bold;
+  padding: 5px 0;
+  color: #388e3c;
+}
+
+.calendar-day {
+  background: white;
+  min-height: 80px;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+}
+
+.day-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.day-number {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.plants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.plant-name {
+  font-size: 0.75rem;
+  color: #4caf50;
+}
+
+.calendar-day.today {
+  background: #97ba98; 
+  border: 2px solid #388e3c;
+}
+
+
+.calendar-header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header-controls h2 {
+  margin: 0;
+}
+
+.calendar-header-controls button {
+  background: #81c784;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.calendar-header-controls button:hover {
+  background: #66bb6a;
+}
