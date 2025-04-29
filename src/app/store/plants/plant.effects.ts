@@ -13,6 +13,7 @@ export class PlantEffects {
     addPlant$
     updateLastWatered$
     updatePlant$
+    deletePlant$
 
     constructor(
         private plantService: PlantService
@@ -60,6 +61,18 @@ export class PlantEffects {
                 this.plantService.updatePlant(plant).pipe(
                   map(() => PlantActions.updatePlantSuccess({ plant })),
                   catchError(error => of(PlantActions.updatePlantFailure({ error })))
+                )
+              )
+            )
+          );
+
+        this.deletePlant$ = createEffect(() =>
+            this.actions$.pipe(
+              ofType(PlantActions.deletePlant),
+              mergeMap(({ plantId }) =>
+                this.plantService.deletePlant(plantId).pipe(
+                  map(() => PlantActions.deletePlantSuccess({ plantId })),
+                  catchError(error => of(PlantActions.deletePlantFailure({ error })))
                 )
               )
             )

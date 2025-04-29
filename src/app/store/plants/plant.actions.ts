@@ -38,5 +38,21 @@ export const updateLastWatered = createAction(
     '[Plant] Update Plant Failure',
     props<{ error: any }>()
   );
+
+  export const deletePlant = createAction(
+    '[Plant] Delete Plant',
+    props<{ plantId: string }>()
+  );
+  
+  export const deletePlantSuccess = createAction(
+    '[Plant] Delete Plant Success',
+    props<{ plantId: string }>()
+  );
+  
+  export const deletePlantFailure = createAction(
+    '[Plant] Delete Plant Failure',
+    props<{ error: any }>()
+  );
+  
   
   

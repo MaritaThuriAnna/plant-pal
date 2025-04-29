@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectAllPlants } from '../../store/plants/plant.selectors';
-import { loadPlants, updateLastWatered, updatePlant } from '../../store/plants/plant.actions';
+import { deletePlant, loadPlants, updateLastWatered, updatePlant } from '../../store/plants/plant.actions';
 import { NotificationComponent } from "../notification/notification.component";
 import { NotificationService } from '../../services/notification.service';
 import { FormsModule } from '@angular/forms';
@@ -82,4 +82,11 @@ export class PlantListComponent {
   cancelEdit() {
     this.editingPlant = null;
   }
+
+  deletePlant(plantId: string) {
+    if (confirm('Are you sure you want to delete this plant?')) {
+      this.store.dispatch(deletePlant({ plantId }));
+    }
+  }
+  
 }

@@ -39,7 +39,11 @@ export const plantReducer = createReducer(
     plants: state.plants.map(p =>
       p.id === plant.id ? { ...p, ...plant } : p
     )
-  }))
+  })),
   
+  on(PlantActions.deletePlantSuccess, (state, { plantId }) => ({
+    ...state,
+    plants: state.plants.filter(plant => plant.id !== plantId)
+  }))
   
 );
