@@ -26,5 +26,12 @@ export const plantReducer = createReducer(
     plants: [...state.plants, plant],
     loading: false
   })),
-  on(PlantActions.addPlantFailure, (state, { error }) => ({ ...state, loading: false, error }))
+  on(PlantActions.addPlantFailure, (state, { error }) => ({ ...state, loading: false, error })),
+  on(PlantActions.updateLastWateredSuccess, (state, { plantId, date }) => ({
+    ...state,
+    plants: state.plants.map(plant =>
+      plant.id === plantId ? { ...plant, lastWatered: date } : plant
+    )
+  })),
+  
 );

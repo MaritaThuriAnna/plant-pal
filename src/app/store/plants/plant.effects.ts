@@ -11,10 +11,11 @@ export class PlantEffects {
 
     loadPlants$
     addPlant$
+    updateLastWatered$
 
     constructor(
         private plantService: PlantService
-    ){
+    ) {
         this.loadPlants$ = createEffect(() =>
             this.actions$.pipe(
                 ofType(PlantActions.loadPlants),
@@ -29,15 +30,27 @@ export class PlantEffects {
 
         this.addPlant$ = createEffect(() =>
             this.actions$.pipe(
-              ofType(PlantActions.addPlant),
-              mergeMap(({ plant }) =>
-                this.plantService.addPlant(plant).pipe(
-                  map(savedPlant => PlantActions.addPlantSuccess({ plant: savedPlant })),
-                  catchError(error => of(PlantActions.addPlantFailure({ error })))
+                ofType(PlantActions.addPlant),
+                mergeMap(({ plant }) =>
+                    this.plantService.addPlant(plant).pipe(
+                        map(savedPlant => PlantActions.addPlantSuccess({ plant: savedPlant })),
+                        catchError(error => of(PlantActions.addPlantFailure({ error })))
+                    )
                 )
-              )
             )
-          );
+        );
+
+        this.updateLastWatered$ = createEffect(() =>
+            this.actions$.pipe(
+                ofType(PlantActions.updateLastWatered),
+                mergeMap(({ plantId, date }) =>
+                    this.plantService.updateLastWatered(plantId, date).pipe(
+                        map(() => PlantActions.updateLastWateredSuccess({ plantId, date })),
+                        catchError(error => of(PlantActions.updateLastWateredFailure({ error })))
+                    )
+                )
+            )
+        );
     }
 
 

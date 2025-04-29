@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { addPlant } from '../../store/plants/plant.actions';
+import { Plant } from '../../store/plants/plant.model';
 
 @Component({
   standalone: true,
@@ -12,7 +13,7 @@ import { addPlant } from '../../store/plants/plant.actions';
   styleUrl: './add-plant.component.css'
 })
 export class AddPlantComponent {
-  form: FormGroup;  
+  form: FormGroup;
 
   constructor(private fb: FormBuilder, private store: Store) {
     this.form = this.fb.group({
@@ -25,11 +26,13 @@ export class AddPlantComponent {
 
   submit() {
     if (this.form.valid) {
-      const plant = {
+      const today = new Date().toISOString().split('T')[0];
+      const plant: Plant = {
         id: '',
         name: this.form.value.name!,
         species: this.form.value.species || '',
         wateringFrequency: this.form.value.wateringFrequency ?? 0,
+        lastWatered: today,
         notes: this.form.value.notes || ''
       };
 
@@ -37,4 +40,5 @@ export class AddPlantComponent {
       this.form.reset();
     }
   }
+
 }

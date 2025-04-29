@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, getDocs, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, doc, getDocs, getFirestore, updateDoc } from 'firebase/firestore';
 import { from, map } from 'rxjs';
 import { Plant } from '../store/plants/plant.model';
 import { initializeApp } from 'firebase/app';
@@ -25,8 +25,17 @@ export class PlantService {
 
     addPlant(plant: Plant) {
         const plantRef = collection(db, 'plants');
-        return from(addDoc(plantRef, plant)).pipe(
-            map(docRef => ({ ...plant, id: docRef.id }))
+        const { id, ...plantWithoutId } = plant;
+        return from(addDoc(plantRef, plantWithoutId)).pipe(
+            map(docRef => ({
+                ...plant,
+                id: docRef.id // noul id corect
+            }))
         );
+    }
+
+    updateLastWatered(plantId: string, date: string) {
+        const plantDocRef = doc(db, 'plants', plantId);
+        return from(updateDoc(plantDocRef, { lastWatered: date }));
     }
 }

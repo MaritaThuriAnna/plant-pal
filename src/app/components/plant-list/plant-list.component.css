@@ -1,0 +1,52 @@
+.plant-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .plant-list li {
+    background: white;
+    margin: 10px auto;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  /* ✨ Stil pentru buton */
+  .plant-list button {
+    padding: 8px 16px;
+    background: #81c784; /* Verde deschis */
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .plant-list button:hover {
+    background: #66bb6a; /* Verde mai intens */
+  }
+  
+  .plant-list button:active {
+    background: #388e3c;
+  }
+
+  /* Status OK */
+.plant-list li.OK {
+    border-left: 5px solid #81c784; /* verde deschis */
+  }
+  
+  /* Status Needs watering */
+  .plant-list li.Needs\ watering {
+    border-left: 5px solid #e57373; /* rosu pal */
+    background: #fff5f5;
+  }
+  
+  

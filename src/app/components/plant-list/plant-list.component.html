@@ -1,10 +1,17 @@
 <div class="plant-list">
-    <h2>My Plants</h2>
-  
+    <h2>My Plants 🌱</h2>
+
     <ul>
-      <li *ngFor="let plant of plants$ | async">
-        {{ plant.name }} - Water every {{ plant.wateringFrequency }} days
-      </li>
+        <li *ngFor="let plant of plants$ | async" [ngClass]="getPlantStatus(plant)">
+            {{ plant.name }} - Water every {{ plant.wateringFrequency }} days
+            <br />
+            Last watered: {{ plant.lastWatered }}
+            <br />
+            Notes: {{ plant.notes }}
+            <br />
+            Status: <strong>{{ getPlantStatus(plant) }}</strong>
+            <br />
+            <button (click)="markAsWatered(plant.id)">💧 Mark as Watered</button>
+        </li>
     </ul>
-  </div>
-  
+</div>
