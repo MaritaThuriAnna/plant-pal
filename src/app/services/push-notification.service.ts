@@ -32,9 +32,6 @@ export class PushNotificationService {
   }
 
   listen() {
-    // onMessage(this.messaging, payload => {
-    //   alert(`🔔 ${payload.notification?.title}: ${payload.notification?.body}`);
-    // });
     onMessage(this.messaging, payload => {
       const title = payload.notification?.title || 'Notification';
       const body = payload.notification?.body || '';
