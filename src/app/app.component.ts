@@ -17,18 +17,16 @@ export class AppComponent {
 
   constructor(private store: Store, private pushService: PushNotificationService) {
     this.store.dispatch(loadPlants());
-    // this.pushService.requestPermission();
-    // this.pushService.listen();
   }
   sendTestPush() {
     if (this.pushService.deviceToken) {
       this.pushService.sendPushNotification(
         this.pushService.deviceToken,
         '💧 Water Reminder',
-        'Your Aloe Vera needs watering!'
+        'Some of your plants need watering!'
       );
     } else {
-      console.warn('⚠️ No device token yet.');
+      console.warn('No device token yet.');
     }
   }
   
