@@ -47,14 +47,14 @@ export class PushNotificationService {
   }
 
   sendPushNotification(token: string, title: string, body: string) {
-    fetch('http://localhost:3000/send-notification', {
+    fetch('https://plant-push-server.onrender.com/send-notification', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token, title, body })
     })
       .then(res => res.json())
-      .then(data => console.log('✅ Push sent via backend:', data))
-      .catch(err => console.error('❌ Backend push error:', err));
+      .then(data => console.log('Push sent via backend:', data))
+      .catch(err => console.error('Backend push error:', err));
   }
 
 }
